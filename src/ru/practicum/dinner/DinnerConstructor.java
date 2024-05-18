@@ -6,7 +6,7 @@ public class DinnerConstructor {
     HashMap<String, ArrayList<String>> dishesByType = new HashMap<>();
 
     public void saveDishByType (String dishType, String dishName) {
-        if (dishesByType.containsKey(dishType)) {
+        if (checkType(dishType)) {
             ArrayList<String> dishesList = dishesByType.get(dishType);
             dishesList.add(dishName);
         } else {
@@ -14,6 +14,14 @@ public class DinnerConstructor {
             dishesList.add(dishName);
             dishesByType.put(dishType, dishesList);
         }
+    }
+
+    public Boolean checkType(String type) {
+        boolean isTypeExist = false;
+        if (dishesByType.containsKey(type)) {
+            isTypeExist = true;
+        }
+        return isTypeExist;
     }
 
 }
