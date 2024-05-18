@@ -41,7 +41,7 @@ public class Main {
         System.out.println("Введите название блюда:");
         String dishName = scanner.nextLine();
 
-        // добавьте новое блюдо
+        dc.saveDishByType(dishType, dishName);// добавьте новое блюдо
     }
 
     private static void generateDishCombo() {
@@ -54,10 +54,9 @@ public class Main {
         System.out.println("Вводите типы блюда, разделяя символом переноса строки (enter). Для завершения ввода введите пустую строку");
         String nextItem = scanner.nextLine();
 
-        //реализуйте ввод типов блюд
-        while (!nextItem.isEmpty()) {
-
-        }
+//        //реализуйте ввод типов блюд
+//        while (!nextItem.isEmpty()) {
+//        }
 
         // сгенерируйте комбинации блюд и выведите на экран
 
