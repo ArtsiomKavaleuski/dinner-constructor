@@ -37,12 +37,39 @@ public class Main {
     }
 
     private static void addNewDish() {
-        System.out.println("Введите тип блюда:");
-        String dishType = scanner.nextLine();
-        System.out.println("Введите название блюда:");
-        String dishName = scanner.nextLine();
+//        System.out.println("Введите тип блюда:");
+//        String dishType = scanner.nextLine();
+//        System.out.println("Введите название блюда:");
+//        String dishName = scanner.nextLine();
+//
+//        //dc.saveDishByType(dishType, dishName);// добавьте новое блюдо
 
-        dc.saveDishByType(dishType, dishName);// добавьте новое блюдо
+        ArrayList<String> type1 = new ArrayList<>();
+        type1.add("Грибной суп");
+        type1.add("Борщ");
+        type1.add("Молочный суп");
+        type1.add("Рассольник");
+        type1.add("Суп с фрикадельками");
+        type1.add("Суп без фрикаделек");
+        dc.dishesByType.put("Первое", type1);
+
+        ArrayList<String> type2 = new ArrayList<>();
+        type2.add("Котлета");
+        type2.add("Отбивная");
+        type2.add("Макароны");
+        type2.add("Картошка");
+        type2.add("Рис");
+        type2.add("Греча");
+        dc.dishesByType.put("Второе", type2);
+
+        ArrayList<String> type3 = new ArrayList<>();
+        type3.add("Сок");
+        type3.add("Кола");
+        type3.add("Спрайт");
+        type3.add("Чай");
+        type3.add("Кофе");
+        type3.add("Молоко");
+        dc.dishesByType.put("Напиток", type3);
     }
 
     private static void generateDishCombo() {
@@ -56,6 +83,8 @@ public class Main {
         String nextItem = scanner.nextLine();
         ArrayList<String> userTypes = new ArrayList<>();
 
+
+
 //        //реализуйте ввод типов блюд
         while (!nextItem.isEmpty()) {
             if(dc.dishesByType.containsKey(nextItem)) {
@@ -68,8 +97,7 @@ public class Main {
                 nextItem = scanner.nextLine();
             }
         }
-
-        System.out.println(userTypes);
+        dc.comboGenerator(numberOfCombos, userTypes);
 
         // сгенерируйте комбинации блюд и выведите на экран
 
