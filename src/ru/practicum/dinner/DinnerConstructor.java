@@ -7,21 +7,19 @@ import java.util.Random;
 public class DinnerConstructor {
     HashMap<String, ArrayList<String>> dishesByType = new HashMap<>();
 
-//    public void saveDishByType(String dishType, String dishName) {
-//        if (checkType(dishType)) {
-//            ArrayList<String> dishesList = dishesByType.get(dishType);
-//            dishesList.add(dishName);
-//        } else {
-//            ArrayList<String> dishesList = new ArrayList<>();
-//            dishesList.add(dishName);
-//            dishesByType.put(dishType, dishesList);
-//        }
-//    }
-
-
+    public void saveDishByType(String dishType, String dishName) {
+        if (checkType(dishType)) {
+            ArrayList<String> dishesList = dishesByType.get(dishType);
+            dishesList.add(dishName);
+        } else {
+            ArrayList<String> dishesList = new ArrayList<>();
+            dishesList.add(dishName);
+            dishesByType.put(dishType, dishesList);
+        }
+    }
 
     public void comboGenerator(int numbersOfCombos, ArrayList<String> userTypes) {
-        Random numbersOfCombosGenerator = new Random();
+        Random random = new Random();
         if (dishesByType.isEmpty()) {
             return;
         }
@@ -29,12 +27,12 @@ public class DinnerConstructor {
             System.out.println("Комбо " + (i + 1));
             System.out.print("[");
             for (int j = 0; j < userTypes.size(); j++) {
-                int randomNumber = numbersOfCombosGenerator.nextInt(dishesByType.get(userTypes.get(j)).size());
+                int randomDishIndex = random.nextInt(dishesByType.get(userTypes.get(j)).size());
                 if (j == userTypes.size() - 1) {
-                    String dishGeneratedByType = dishesByType.get(userTypes.get(j)).get(randomNumber);
+                    String dishGeneratedByType = dishesByType.get(userTypes.get(j)).get(randomDishIndex);
                     System.out.print(dishGeneratedByType);
                 } else {
-                    String dishGeneratedByType = dishesByType.get(userTypes.get(j)).get(randomNumber);
+                    String dishGeneratedByType = dishesByType.get(userTypes.get(j)).get(randomDishIndex);
                     System.out.print(dishGeneratedByType + ", ");
                 }
             }
