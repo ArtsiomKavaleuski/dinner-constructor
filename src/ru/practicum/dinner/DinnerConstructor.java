@@ -6,20 +6,13 @@ import java.util.Random;
 
 public class DinnerConstructor {
     HashMap<String, ArrayList<String>> dishesByType = new HashMap<>();
+    Random random = new Random();
 
     public void saveDishByType(String dishType, String dishName) {
-        if (checkType(dishType)) {
-            ArrayList<String> dishesList = dishesByType.get(dishType);
-            dishesList.add(dishName);
-        } else {
-            ArrayList<String> dishesList = new ArrayList<>();
-            dishesList.add(dishName);
-            dishesByType.put(dishType, dishesList);
-        }
+        dishesByType.computeIfAbsent(dishType, k -> new ArrayList<>()).add(dishName);
     }
 
     public void comboGenerator(int numbersOfCombos, ArrayList<String> userTypes) {
-        Random random = new Random();
         if (dishesByType.isEmpty()) {
             return;
         }
@@ -39,13 +32,5 @@ public class DinnerConstructor {
             System.out.println("]");
         }
     }
-
-    public Boolean checkType(String dishType) {
-        boolean isTypeExist = false;
-        if (dishesByType.containsKey(dishType)) {
-            isTypeExist = true;
-        }
-        return isTypeExist;
-    }
-
+    // Получилось, что используя метод computeIfAbsent, метод checkType больше и не нужен.
 }
